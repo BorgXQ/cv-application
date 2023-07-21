@@ -19,6 +19,13 @@ body {
     justify-content: center;
 }
 
+main {
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .a4 {
     background-color: #FFFFFF;
     height: 297mm;
