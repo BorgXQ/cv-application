@@ -17,6 +17,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: scroll;
 }
 
 #root {
@@ -27,12 +28,18 @@ body {
     align-items: center;
 }
 
+.header {
+    font-size: 40px;
+    font-weight: bold;
+}
+
 .a4 {
     background-color: #FFFFFF;
     height: 297mm;
     width: 210mm;
     padding: 1.91cm 2.54cm;
     border: groove 2px rgba(0, 0, 0, .2);
+    margin-top: 20px;
 }
 
 hr {
@@ -87,4 +94,18 @@ li {
 
 .skill {
     list-style-type: circle;
+}
+
+footer {
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: transform .2s;
+}
+
+footer:hover {
+    transform: translateY(-2px);
 }

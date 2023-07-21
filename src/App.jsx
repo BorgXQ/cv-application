@@ -1,6 +1,7 @@
 import { React, useState, useRef } from 'react'
 import pencilEdit from './assets/pencil-edit.svg'
 import trashCan from './assets/trash-can.svg'
+import githubLogo from './assets/github-logo.svg'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 import './css/main.css'
@@ -230,8 +231,13 @@ function App() {
     )
   }
 
+  function redirectGithub() {
+    window.open("https://github.com/BorgXQ/cv-application")
+  }
+
   return (
     <>
+      <div className='header'>Professional CV Builder</div>
       <div className="a4" id='cvReport' ref={pdfRef}>
         <h1 className="full-name">{name}</h1>
         <p className="personal-info">
@@ -332,6 +338,8 @@ function App() {
         className='input-skill'
         placeholder={'Proficient in English, conversant in Japanese.\nJavascript | HTML | CSS | React | Node.js | Express | MongoDB'}
       />
+
+      <footer onClick={redirectGithub}>Git Repo <img src={githubLogo} alt='Github Logo'/></footer>
     </>
   )
 }
