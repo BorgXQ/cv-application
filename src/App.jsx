@@ -1,7 +1,8 @@
-import { React, useState } from 'react'
-import JsPDF from 'jspdf'
+import { React, useState, useRef } from 'react'
 import pencilEdit from './assets/pencil-edit.svg'
 import trashCan from './assets/trash-can.svg'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
 import './css/main.css'
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
   const [skillset, setSkillset] = useState('')
 
   const [contents, setContents] = useState([])
+
+  const pdfRef = useRef()
 
   const contentsEdu = contents.filter(content => content.type === 'edu')
   const contentsWork = contents.filter(content => content.type === 'work')
@@ -199,9 +202,37 @@ function App() {
     )
   }
 
+  function SaveToPDF() {
+    const downloadPDF = () => {
+      const input = pdfRef.current
+      html2canvas(input).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png')
+        const pdf = new jsPDF('portrait', 'pt', 'a4', true)
+        const pdfWidth = pdf.internal.pageSize.getWidth()
+        const pdfHeight = pdf.internal.pageSize.getHeight()
+        const imgWidth = canvas.width
+        const imgHeight = canvas.height
+        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight)
+        const imgX = (pdfWidth - imgWidth * ratio) / 2
+        const imgY = 30
+        pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio)
+        pdf.save('resume.pdf')
+      })
+    }
+  
+    return (
+      <button
+        onClick={downloadPDF}
+        className='download-btn'
+      >
+        Download Resume
+      </button>
+    )
+  }
+
   return (
     <>
-      <div className="a4" id='cvReport'>
+      <div className="a4" id='cvReport' ref={pdfRef}>
         <h1 className="full-name">{name}</h1>
         <p className="personal-info">
             {info}
@@ -362,24 +393,6 @@ function InputSkillArea({
         placeholder={placeholder}
       ></textarea>
     </label>
-  )
-}
-
-function SaveToPDF() {
-  const generatePDF = () => {
-    const resume = new JsPDF('portrait', 'pt', 'a4')
-    resume.html(document.querySelector('#cvReport')).then(() => {
-      resume.save('resume.pdf')
-    })
-  }
-
-  return (
-    <button
-      onClick={generatePDF}
-      className='download-btn'
-    >
-      Download Resume
-    </button>
   )
 }
 
