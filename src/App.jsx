@@ -126,6 +126,14 @@ function App() {
         <button className="to-leader">Leadership Experience</button>
       </div>
 
+      <ul class="data-container">
+        <li class="data">
+          Nanyang Technological University
+          <img src="./assets/pencil-edit.svg" alt="edit"/>
+          <img src="./assets/trash-can.svg" alt="delete"/>
+        </li>
+      </ul>
+
       <label for="" className="insert skill-section">
         Skills:
         <textarea className="input-skill" placeholder="- Javascript | HTML | CSS | React | Node.js | Express | MongoDB"></textarea>

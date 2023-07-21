@@ -58,6 +58,23 @@ button {
     gap: 12px;
 }
 
+.data-container {
+    margin-top: 10px;
+}
+
+.data {
+    font-style: italic;
+    font-size: 14.67px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+img {
+    width: 16px;
+    cursor: pointer;
+}
+
 .skill-section {
     margin-top: 32px;
 }
