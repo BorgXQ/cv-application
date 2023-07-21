@@ -1,5 +1,7 @@
 import { React, useState } from 'react'
 import PersonalInfo from './PersonalInfo'
+import pencilEdit from './assets/pencil-edit.svg'
+import trashCan from './assets/trash-can.svg'
 import './css/main.css'
 
 function App() {
@@ -150,8 +152,8 @@ function App() {
       <ul class="data-container">
         <li class="data">
           Nanyang Technological University
-          <img src="./assets/pencil-edit.svg" alt="edit"/>
-          <img src="./assets/trash-can.svg" alt="delete"/>
+          <img src={pencilEdit} alt="edit"/>
+          <img src={trashCan} alt="delete"/>
         </li>
       </ul>
 
