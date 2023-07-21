@@ -1,0 +1,68 @@
+.name-pers-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 12px;
+}
+
+input {
+    width: 200px;
+    padding: 4px;
+}
+
+textarea {
+    padding: 4px;
+}
+
+button {
+    padding: 4px;
+    cursor: pointer;
+}
+
+.insert {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-pers-info {
+    margin-top: 20px;
+}
+
+.input-pers-info {
+    width: 400px;
+}
+
+.section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-section {
+    display: flex;
+}
+
+.input-desc {
+    width: 600px;
+    height: 200px;
+}
+
+.btn-container {
+    display: flex;
+    gap: 12px;
+}
+
+.skill-section {
+    margin-top: 32px;
+}
+
+.input-skill {
+    width: 440px;
+    height: 80px;
+}
