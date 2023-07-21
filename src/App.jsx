@@ -1,4 +1,5 @@
 import { React, useState } from 'react'
+import JsPDF from 'jspdf'
 import pencilEdit from './assets/pencil-edit.svg'
 import trashCan from './assets/trash-can.svg'
 import './css/main.css'
@@ -200,7 +201,7 @@ function App() {
 
   return (
     <>
-      <div className="a4">
+      <div className="a4" id='cvReport'>
         <h1 className="full-name">{name}</h1>
         <p className="personal-info">
             {info}
@@ -223,13 +224,15 @@ function App() {
         <SectionSkill />
       </div>
 
+      <SaveToPDF />
+
       <div className="name-pers-info">
         <Input
           label='Name:'
           value={name}
           onChange={changeName}
           className='input-name'
-          placeholder='Jane Doe'
+          placeholder='John Doe'
         />
         <br></br>
         <Input
@@ -237,7 +240,7 @@ function App() {
           value={info}
           onChange={changeInfo}
           className='input-pers-info'
-          placeholder="Singapore | +65 1234 5678 | jane.doe@gmail.com"
+          placeholder="Singapore | +65 1234 5678 | john.doe@gmail.com"
         />
       </div>
 
@@ -359,6 +362,24 @@ function InputSkillArea({
         placeholder={placeholder}
       ></textarea>
     </label>
+  )
+}
+
+function SaveToPDF() {
+  const generatePDF = () => {
+    const resume = new JsPDF('portrait', 'pt', 'a4')
+    resume.html(document.querySelector('#cvReport')).then(() => {
+      resume.save('resume.pdf')
+    })
+  }
+
+  return (
+    <button
+      onClick={generatePDF}
+      className='download-btn'
+    >
+      Download Resume
+    </button>
   )
 }
 
