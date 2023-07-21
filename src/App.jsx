@@ -6,25 +6,40 @@ function App() {
   const [name, setName] = useState('')
   const [info, setInfo] = useState('')
 
+  const [title, setTitle] = useState('')
+  const [place, setPlace] = useState('')
+  const [role,setRole] = useState('')
+  const [date, setDate] = useState('')
+  const [desc, setDesc] = useState('')
+
+  const changeName = (e) => {
+    setName(e.target.value)
+  }
+
+  const changeInfo = (e) => {
+    setInfo(e.target.value)
+  }
+
+
   return (
     <>
       <div className="a4">
-        <h1 className="full-name">Jonathan Widarsa</h1>
+        <h1 className="full-name">{name}</h1>
         <p className="personal-info">
-            Singapore | +65 8505 6150 | jonathan.widarsa@gmail.com
+            {info}
         </p>
         <div className="heading">EDUCATION</div>
         <hr></hr>
-        <div claclassNamess="title-place">
-          <div className="title">Nanyang Technological University</div>
-          <div className="place">Singapore</div>
+        <div className="title-place">
+          <div className="title">{title}</div>
+          <div className="place">{place}</div>
         </div>
         <div className="role-date">
-          <div className="role">Biological Sciences</div>
-          <div className="date">June 2020 - Present</div>
+          <div className="role">{role}</div>
+          <div className="date">{date}</div>
         </div>
         <ul>
-          <li><div className="description">NTU Modern Jazz Hip-Hop member</div></li>
+          <li><div className="description">{desc}</div></li>
         </ul>
 
         <div className="heading">WORK EXPERIENCE</div>
@@ -82,15 +97,21 @@ function App() {
       </div>
 
       <div className="name-pers-info">
-        <label for="insert" className="insert">
-          Name:
-          <input type="text" className="input-name" placeholder="Jane Doe"/>
-        </label>
+        <Input
+          label='Name:'
+          value={name}
+          onChange={changeName}
+          className='input-name'
+          placeholder='Jane Doe'
+        />
         <br></br>
-        <label for="insert" className="insert">
-          Personal Information:
-          <input type="text" className="input-pers-info" placeholder="Singapore | +65 1234 5678 | jane.doe@gmail.com"/>
-        </label>
+        <Input
+          label='Personal Information:'
+          value={info}
+          onChange={changeInfo}
+          className='input-pers-info'
+          placeholder="Singapore | +65 1234 5678 | jane.doe@gmail.com"
+        />
       </div>
 
       <div className="section">
@@ -139,6 +160,25 @@ function App() {
         <textarea className="input-skill" placeholder="- Javascript | HTML | CSS | React | Node.js | Express | MongoDB"></textarea>
       </label>
     </>
+  )
+}
+
+function Input({
+  label,
+  value,
+  onChange,
+  className,
+  placeholder}) {
+  return (
+    <label className='insert'>
+      {label}
+      <input
+        value={value}
+        onChange={onChange}
+        className={className}
+        placeholder={placeholder}
+      />
+    </label>
   )
 }
 
