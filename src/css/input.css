@@ -24,6 +24,10 @@ button {
     cursor: pointer;
 }
 
+.download-btn {
+    margin-top: 20px;
+}
+
 .insert {
     display: flex;
     flex-direction: column;
