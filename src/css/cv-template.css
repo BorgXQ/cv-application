@@ -19,7 +19,7 @@ body {
     justify-content: center;
 }
 
-main {
+#root {
     width: 1000px;
     padding: 2rem;
     display: flex;
